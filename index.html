@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>江落 · AMOUR · JIANG LUO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+SC:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-ambience"></div>
+  <div class="bg-gradient-overlay"></div>
+  <img src="透明底单只蝴蝶素材.png" alt="butterfly" class="flying-butterfly">
+  <canvas id="rain-canvas"></canvas>
+  <canvas id="click-canvas"></canvas>
+
+  <div class="app-viewport">
+    <!-- 侧边留白装饰英文：极细极淡衬线水印 -->
+    <div class="side-watermark side-wm-left">SILENCE IS THE LOUDEST VOICE</div>
+    <div class="side-watermark side-wm-right">ECHOES OF THE DEEP BLUE</div>
+    <header class="top-header">
+      <div class="header-tag">
+        <span class="header-dot"></span>
+        <span>Amour. · 常驻</span>
+      </div>
+      <div class="header-right">
+<button class="sound-toggle music-toggle" id="music-toggle" title="背景音乐开关（Écoute Chérie）" aria-label="背景音乐开关">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </button>
+                <button class="sound-toggle" id="sound-toggle" title="雨声环境音开关" aria-label="雨声环境音开关">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3c-3 4-6 6-6 10a6 6 0 0 0 12 0c0-4-3-6-6-10z"></path>
+            <path class="sound-wave wave-1" d="M8.5 14.5a3.5 3.5 0 0 0 2 3"></path>
+            <path class="sound-wave wave-2" d="M15.5 14.5a3.5 3.5 0 0 1-2 3"></path>
+          </svg>
+        </button>
+        <button class="sound-toggle layout-toggle" id="layout-toggle" title="横屏 / 竖屏布局切换" aria-label="横屏 / 竖屏布局切换">
+          <svg viewBox="0 0 24 24">
+            <rect class="lt-rect" x="4" y="2" width="16" height="20" rx="3"></rect>
+            <path class="lt-arrow" d="M9.5 12l5-3.5v7z"></path>
+          </svg>
+        </button>
+        <div class="header-quote">Show, never tell.</div>
+      </div>
+    </header>
+
+    <main class="slider-stage" id="slider-stage">
+      <!-- PAGE 0: 首页 -->
+      <section class="page-slide active" data-index="0">
+        <div class="hero-visual">
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-ring"></div>
+            <!-- 围绕头像盘旋飞翔的小鸟系统 -->
+            <div class="avatar-orbit orbit-1">
+              <div class="orbit-bird">
+                <svg viewBox="0 0 24 24"><path d="M2 12c4-4 8-1 10 3 2-4 6-7 10-3-4 1-7 5-10 1-3 4-6 0-10-1z"/></svg>
+              </div>
+            </div>
+            <div class="avatar-orbit orbit-2">
+              <div class="orbit-bird bird-delay">
+                <svg viewBox="0 0 24 24"><path d="M2 12c4-4 8-1 10 3 2-4 6-7 10-3-4 1-7 5-10 1-3 4-6 0-10-1z"/></svg>
+              </div>
+            </div>
+            <div class="avatar-orbit orbit-3">
+              <div class="orbit-bird bird-small">
+                <svg viewBox="0 0 24 24"><path d="M2 12c4-4 8-1 10 3 2-4 6-7 10-3-4 1-7 5-10 1-3 4-6 0-10-1z"/></svg>
+              </div>
+            </div>
+            <img src="头像.png" alt="头像" class="hero-avatar">
+          </div>
+          <h1 class="hero-title">江落</h1>
+          <p class="hero-sub">AMOUR · JIANG LUO</p>
+        </div>
+        <div class="glass-box motto-card">
+          “If I love you was a promise.”
+          <span class="en-sub">SHOW, NEVER TELL.</span>
+        </div>
+        <div class="glass-box profile-card">
+          <div class="card-caption">PROFILE · 个人档案</div>
+          <div class="profile-meta">
+            23 · 男 · 双 ｜ INTJ · 金牛 ｜ 常驻：回忆录 · 岁虞 · 淡锈
+          </div>
+          <div class="profile-details">
+            主风格：温病 · 引导 · 温低 · 高擦动描
+          </div>
+        </div>
+        <div class="tags-row">
+          <span class="tag-badge"># 温病</span>
+          <span class="tag-badge"># INTJ</span>
+          <span class="tag-badge"># 文艺</span>
+        </div>
+        <div class="links-row">
+          <a class="mf-btn link-pill" href="https://www.kdocs.cn/l/cigBjUnvDXes" target="_blank" rel="noopener">约存</a>
+          <a class="mf-btn link-pill" href="https://www.kdocs.cn/l/cfr36CbH7su3" target="_blank" rel="noopener">冠卡</a>
+          <a class="mf-btn link-pill" href="https://www.kdocs.cn/l/cj9PNalCUYAN" target="_blank" rel="noopener">头牌</a>
+        </div>
+        <button class="mf-btn mf-gallery-open" id="mf-gallery-open">✦ 查看全部老板点评 ✦</button>
+      </section>
+
+      <!-- PAGE 1: 风格 (优化垂直排版丰满度) -->
+      <section class="page-slide" data-index="1">
+        <div class="section-head">
+          <h2>风格与心绪</h2>
+          <p>UNBOUND BY RHYME AND METER</p>
+        </div>
+        <div class="lotus-frame" id="lotus-card">
+          <div class="lotus-inner">
+            <img src="593741bbbb9af3775f97e868536f271c.png" alt="莲花" class="lotus-banner">
+            <div class="lotus-shine" id="lotus-shine"></div>
+            <div class="lotus-overlay-text">
+              <span>ECHOES OF THE GREY RAIN</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-watermark-bg">AESTHETICS & UNBOUND</div>
+        <div class="glass-box tone-list">
+          <div class="tone-item">
+            <div class="tone-header">
+              <span class="tone-name">✦ 主调</span>
+              <span class="tone-tag">核心</span>
+            </div>
+            <div class="aura-meter">
+              <div class="aura-fill aura-warm"></div>
+            </div>
+            <div class="tone-chips">
+              <span class="tone-chip">温病</span>
+              <span class="tone-chip">引导</span>
+              <span class="tone-chip">温低</span>
+              <span class="tone-chip">高擦动描</span>
+            </div>
+          </div>
+          <div class="tone-item">
+            <div class="tone-header">
+              <span class="tone-name">✦ 尾调</span>
+              <span class="tone-tag">余韵</span>
+            </div>
+            <div class="aura-meter">
+              <div class="aura-fill aura-cool"></div>
+            </div>
+            <div class="tone-chips">
+              <span class="tone-chip">潮湿</span>
+              <span class="tone-chip">克制</span>
+              <span class="tone-chip">余韵</span>
+            </div>
+          </div>
+          <div class="tone-item tone-highlight">
+            <div class="tone-header">
+              <span class="tone-name">✦ 心声</span>
+              <span class="tone-tag">信条</span>
+            </div>
+            <div class="tone-desc confession-text">
+              If I love you was a promise, would you break it if you're honest. I just wish you could feel what you say. Show, never tell.
+            </div>
+          </div>
+          <div class="style-extra-quote">
+            <span class="quote-symbol">“</span>I just wish you could feel what you say.<span class="quote-symbol">”</span>
+          </div>
+        </div>
+        <img src="71464fb3d3ac2cf5af92e4f80198e957.png" alt="装饰横幅" class="deco-strip">
+      </section>
+
+      <!-- PAGE 2: 归程 / 赴约信息表 -->
+      <section class="page-slide" data-index="2">
+        <div class="section-head text-center">
+          <h2>赴约</h2>
+          <p>BEFORE WE MEET</p>
+        </div>
+        <p class="journey-lead">
+          雨会停，路会干——在赴约之前，请先留下你的线索。
+        </p>
+
+        <!-- 互动填写表 -->
+        <div class="glass-box meet-form" id="meet-form">
+          <div class="mf-title">₊˚⊹ 在赴约前 还请您填写以下信息 ʚ⊹˚₊</div>
+
+          <div class="mf-group">
+            <div class="mf-label">风格喜好（可多选）</div>
+            <div class="mf-chips" id="mf-styles">
+              <span class="mf-chip">高恋</span>
+              <span class="mf-chip">低无</span>
+              <span class="mf-chip">温病</span>
+              <span class="mf-chip">引导</span>
+              <span class="mf-chip">温低</span>
+              <span class="mf-chip">高擦动描</span>
+              <span class="mf-chip">剖析</span>
+              <span class="mf-chip">上位/平权</span>
+            </div>
+          </div>
+
+          <div class="mf-grid">
+            <label class="mf-field">备注/称呼<input type="text" id="mf-call" placeholder="怎么称呼您"></label>
+            <label class="mf-field">性别<input type="text" id="mf-gender" placeholder="您的性别"></label>
+            <label class="mf-field">年龄<input type="text" id="mf-age" placeholder="您的年龄"></label>
+            <label class="mf-field">喜点<input type="text" id="mf-like" placeholder="喜欢什么"></label>
+            <label class="mf-field">雷点<input type="text" id="mf-hate" placeholder="雷到什么"></label>
+          </div>
+
+          <div class="mf-group">
+            <div class="mf-label">是否接受擦</div>
+            <div class="mf-chips mf-single" id="mf-rub">
+              <span class="mf-chip">否</span>
+              <span class="mf-chip">微擦</span>
+              <span class="mf-chip">高擦</span>
+            </div>
+          </div>
+
+          <div class="mf-group">
+            <div class="mf-label">是否新手板</div>
+            <div class="mf-chips mf-single" id="mf-newbie">
+              <span class="mf-chip">是</span>
+              <span class="mf-chip">否</span>
+            </div>
+          </div>
+
+          <label class="mf-field mf-note-field">备注<textarea id="mf-note" rows="2" placeholder="其他想对我说的话…"></textarea></label>
+
+          <button class="mf-done" id="mf-done">✦ 完 成 填 写 ✦</button>
+        </div>
+
+        <!-- 完成后的截屏卡 -->
+        <div class="glass-box mf-summary" id="mf-summary" style="display:none">
+          <div class="mf-sum-head">✦ 您的赴约信息 ✦</div>
+          <div class="mf-sum-body" id="mf-sum-body"></div>
+          <div class="mf-sum-foot">SHOW, NEVER TELL · 江落</div>
+          <div class="mf-sum-actions">
+            <button class="mf-btn" id="mf-edit">返回修改</button>
+          </div>
+        </div>
+
+        <div class="journey-footer">
+          <span class="footer-line"></span>
+          <span class="footer-text">ANYTIME YOUR SIDE · 随时在你身边</span>
+          <span class="footer-line"></span>
+        </div>
+      </section>
+
+      <!-- 二级页面：老板点评图库 -->
+      <div class="gallery-overlay" id="gallery-overlay">
+        <div class="gallery-head">
+          <span class="gallery-title">老板点评 · BOSS REVIEW</span>
+          <button class="gallery-close" id="gallery-close">✕ 关闭</button>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+        <div class="gallery-viewer" id="gallery-viewer">
+          <img id="gallery-viewer-img" alt="点评大图">
+          <div class="gallery-viewer-cap" id="gallery-viewer-cap"></div>
+        </div>
+      </div>
+
+      <!-- PAGE 3: 须知 (优化结构饱满度，完整收录准则) -->
+      <section class="page-slide" data-index="3">
+        <div class="section-head">
+          <h2>点单须知</h2>
+          <p>NOTICE BEFORE WE MEET</p>
+        </div>
+        <p class="notice-lead">
+          为了我们都有一场愉悦的相处体验，请在见面前后阅读以下守则——尊重是互相的。
+        </p>
+        <img src="4366ccbc1c6d374b3a630757266c1ab8.png" alt="装饰横幅" class="deco-strip">
+        <div class="glass-box notice-rules">
+          <div class="rule-item">
+            <div class="rule-icon">01</div>
+            <div class="rule-content">
+              <div class="rule-label">关于点单</div>
+              <div class="rule-body">
+                婉拒 le / 匿名点单，否则点单视为送单；请及时填写喜雷表，我不想因失误让您失去对本次见面的耐心。
+              </div>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-icon">02</div>
+            <div class="rule-content">
+              <div class="rule-label">关于时间</div>
+              <div class="rule-body">
+                您有一定时间决定我的去留，超时将按时间收取一定费用；恕我婉拒一切卡点换人退单的请求（30 默认 10min 内 ｜ 1h 默认 15min 内）。
+              </div>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-icon">03</div>
+            <div class="rule-content">
+              <div class="rule-label">关于相处</div>
+              <div class="rule-body">
+                见面开始便是你我之间关系的开始，请勿提及与本次相处无关或涉三的内容，出戏尬场概不负责；若不喜欢涉及私密内容请提前说明。
+              </div>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-icon">04</div>
+            <div class="rule-content">
+              <div class="rule-label">关于尊重</div>
+              <div class="rule-body">
+                拒绝抽象行为 / 恶意整活 / 全程扣6；想去的约会地点或事项请提前告知，我会照顾您所有合理需求。
+              </div>
+            </div>
+          </div>
+          <div class="safe-word-card">
+            <div class="safe-word-title">安全词 · SAFE WORD</div>
+            <div class="safe-word-content">「我需要休息」</div>
+          </div>
+          <div class="bottom-trust-note">
+            相处期间我会尽可能照料您的情绪，如有崩坏或难以接受，请直接告诉我安全词。
+          </div>
+          <div class="notice-bottom-en">
+            <span>SILENCE IS THE LOUDEST VOICE · SHOW NEVER TELL</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="scroll-hint" id="scroll-hint">
+      <span>SWIPE</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+
+    <nav class="dock-nav">
+      <button class="dock-btn active" onclick="goToSlide(0)">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>主页</span>
+      </button>
+      <button class="dock-btn" onclick="goToSlide(1)">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+        <span>风格</span>
+      </button>
+      <button class="dock-btn" onclick="goToSlide(2)">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>归程</span>
+      </button>
+      <button class="dock-btn" onclick="goToSlide(3)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span>须知</span>
+      </button>
+    </nav>
+  </div>
+
+    <div class="draw-overlay" id="draw-overlay">
+      <div class="draw-modal">
+        <div class="dm-card" id="dm-card">
+          <div class="dm-sym" id="dm-sym">✦</div>
+          <div class="dm-name" id="dm-name">星星</div>
+          <div class="dm-en" id="dm-en">THE STAR</div>
+          <div class="dm-line"></div>
+          <p class="dm-verse" id="dm-verse"></p>
+          <div class="dm-kw" id="dm-kw"></div>
+        </div>
+        <div class="dm-actions">
+          <button class="dm-btn" id="dm-keep">收下这支签</button>
+          <button class="dm-btn dm-ghost" id="dm-redraw">再抽一次</button>
+        </div>
+      </div>
+    </div>
+    <audio id="bg-music" src="Écoute Chérie.mp3" loop preload="auto"></audio>
+    <script src="script.js"></script>
+  </body>
+</html>
